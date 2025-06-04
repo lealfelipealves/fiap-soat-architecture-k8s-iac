@@ -1,32 +1,47 @@
 variable "aws_region" {
-  default = "us-east-1"
-}
-
-variable "prefix" {
-  description = "Prefixo usado para nomear recursos"
+  description = "AWS region"
   type        = string
+  default     = "us-east-1"
 }
 
-variable "cluster_name" {
-  type = string
+variable "environment" {
+  description = "Environment name"
+  type        = string
+  default     = "dev"
 }
 
-variable "retention_in_days" {
-  type = number
-  default = 7
+variable "project_name" {
+  description = "Project name"
+  type        = string
+  default     = "myapp"
 }
 
-variable "desired_size" {
-  type = number
-  default = 2
+variable "vpc_cidr" {
+  description = "CIDR block for VPC"
+  type        = string
+  default     = "10.1.0.0/16"
 }
 
-variable "max_size" {
-  type = number
-  default = 4
+variable "node_group_desired_size" {
+  description = "Desired size of the node group"
+  type        = number
+  default     = 1
 }
 
-variable "min_size" {
-  type = number
-  default = 2
+variable "node_group_max_size" {
+  description = "Maximum size of the node group"
+  type        = number
+  default     = 2
+}
+
+variable "node_group_min_size" {
+  description = "Minimum size of the node group"
+  type        = number
+  default     = 1
+}
+
+variable "node_instance_types" {
+  description = "List of instance types for the node group"
+  type        = list(string)
+  default     = ["t3.micro"]
 }
